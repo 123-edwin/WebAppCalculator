@@ -1,0 +1,84 @@
+﻿<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+@page "/calculadora3"
+
+<h3>Calculadora</h3>
+
+
+
+<form>
+
+    <div class="form-group">
+        <input type="number" @bind="num1" class="form-control" id="exampleInputNumber1" placeholder="Ingresa el primer numero" style="margin-bottom:10px;">
+    </div>
+
+    <!-- Opciones-->
+    <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-bottom:10px">
+        <label class="btn btn-outline-secondary">
+            <input type="radio" name="operacion" id="option1" @onclick="() => SeleccionarOpcion(1)" autocomplete="off"><i class="bi-plus"></i>
+        </label>
+        <label class="btn btn-outline-secondary">
+            <input type="radio" name="operacion" id="option2" @onclick="() => SeleccionarOpcion(2)" autocomplete="off"><i class="bi-dash"></i>
+        </label>
+        <label class="btn btn-outline-secondary">
+            <input type="radio" name="operacion" id="option3" @onclick="() => SeleccionarOpcion(3)" autocomplete="off"><i class="bi-asterisk"></i>
+        </label>
+        <label class="btn btn-outline-secondary">
+            <input type="radio" name="operacion" id="option4" @onclick="() => SeleccionarOpcion(4)" autocomplete="off"><i class="bi-hr"></i>
+        </label>
+    </div>
+
+    <div class="form-group">
+        <input type="number" @bind="num2" class="form-control" id="exampleInputNumber2" placeholder="Ingresa el segundo numero" style="margin-bottom:10px;">
+    </div>
+
+    <button type="button" @onclick="operacion" class="btn btn-outline-success" style="margin-bottom:10px;">Resultado</button>
+
+    <div class="form-group">
+        <input type="text" @bind="result" readonly class="form-control" id="exampleInputNumber3" placeholder="Resultado" style="margin-bottom:10px;">
+    </div>
+
+
+
+
+</form>
+
+
+@code {
+
+    private double num1;
+    private double num2;
+    private double result;
+    private int option;
+
+
+    private void SeleccionarOpcion(int opcion)
+    {
+        option = opcion;
+
+    }
+
+    private void operacion()
+    {
+        if (option == 1)
+        {
+            result = num1 + num2;
+
+        }
+        else if (option == 2)
+        {
+            result = num1 - num2;
+
+        }
+        else if (option == 3)
+        {
+            result = num1 * num2;
+
+        }
+        else if (option == 4)
+        {
+            result = num1 / num2;
+        }
+
+    }
+}
+
